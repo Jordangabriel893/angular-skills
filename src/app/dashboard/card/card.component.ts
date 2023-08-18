@@ -13,12 +13,10 @@ export class CardComponent implements OnInit {
   ngOnInit() {
   }
 
-  onLike(card: any){
-    // TODO: incrementar o like, salvar via rest
-  }
-
-  onShare(card: any){
+  onShare(card: any) {
     // TODO: abrir o link do seu linkedin
+    window.location.href = 'www.linkedin.com/in/jordan-gabriel-26827a120'
+
   }
 
 }

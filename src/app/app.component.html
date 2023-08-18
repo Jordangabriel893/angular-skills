@@ -1,5 +1,17 @@
-<h3>
-  My Skills
-</h3>
-
-<app-dashboard></app-dashboard>
+<mat-toolbar>
+  <span>My Skills</span>
+</mat-toolbar>
+<div class="loading" *ngIf="loading">
+  <div class="lds-roller">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+  </div>
+  <h4>Loading Skills</h4>
+</div>
+<app-dashboard (loading)="getValueLoading($event)"></app-dashboard>

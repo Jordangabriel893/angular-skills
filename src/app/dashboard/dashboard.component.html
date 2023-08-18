@@ -1,2 +1,40 @@
 <!--TODO: melhorar o layout dos cards para exibir ao menos 2 por linha em telas > md, e pequenas (sm) 1 -->
-<app-card [card]="card" *ngFor="let card of cards"></app-card>
+
+<ng-template [ngIf]="cards">
+    <app-card [card]="card" *ngFor="let card of cards" class="col-12 col-sm-12 col-md-6 col-lg-4 align-cards">
+
+        <ng-container title>
+            <mat-card-header>
+                <mat-card-title>{{card.name}}</mat-card-title>
+            </mat-card-header>
+        </ng-container>
+
+        <ng-container image>
+            <img mat-card-image [src]="card.pic" class="card-pic" alt="Photo of a Shiba Inu">
+        </ng-container>
+
+        <ng-container content>
+            <mat-card-content>
+                <p>
+                    {{card.description}}
+                </p>
+            </mat-card-content>
+        </ng-container>
+
+        <ng-container actions>
+            <mat-card-actions>
+                <button mat-button (click)="onLike(card)">
+                    <img src="../../assets/hand-thumbs-up.svg" class="svg">
+                </button>
+                <button mat-button (click)="onShare(card)"><img src="../../assets/share.svg" class="svg"> </button>
+            </mat-card-actions>
+            <mat-card-actions>
+                <button mat-button [ngStyle]="{'color': 
+                        card.likes >= 5 && card.likes < 10 ? 'blue' : 
+                        card.likes >= 10 ? 'red' : 'black'}" style="margin-bottom: 10px;">
+                    <b>{{card.likes}} {{card.likes == 1 ? 'like' : 'likes'}}</b></button>
+            </mat-card-actions>
+
+        </ng-container>
+    </app-card>
+</ng-template>
